@@ -23,8 +23,7 @@ array.sort(callback); //compares on strings, doesn't work properly without callb
 
 console.log(array);
 
-
-function callback(a, b) {
+function callback (a, b) {
     if (a > b) {
         return 1;
     } else if (b > a) {
