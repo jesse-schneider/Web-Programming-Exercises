@@ -11,9 +11,9 @@ app.use(express.static(__dirname+'/www'));
 app.use(bodyparser.json());
 
 let users = [
-    {email: "g@griffith.com", pwd: "test"},
-    {email: "g@griffith.com",pwd: "test1"},
-    {email: "g@griffith.com",pwd: "test2"},
+    {email: "a@griffith.com", pwd: "test"},
+    {email: "b@griffith.com",pwd: "test1"},
+    {email: "c@griffith.com",pwd: "test2"},
 ];
 
 
