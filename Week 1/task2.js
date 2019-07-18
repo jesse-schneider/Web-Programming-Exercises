@@ -1,5 +1,9 @@
 var obj = {
-        people: ["Samuel Jackson", "Daniel Cooke", "Kristian Grimley"]
+        "people": [
+            {"firstname": "Samuel", "lastname": "Cooke"},
+            {"firstname": "Daniel", "lastname": "Grimley"},
+            {"firstname": "Kristian", "lastname": "Thistle"}
+        ]
 };
 
 console.log(obj);
