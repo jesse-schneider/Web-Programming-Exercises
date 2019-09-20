@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from './../login.service';
+
 
 @Component({
   selector: 'app-login',
@@ -11,31 +13,26 @@ export class LoginComponent implements OnInit {
   email = "";
   password = "";
 
-  users = [
-    {email: "test@test.com", password:"test"},
-    { email: "test1@test.com", password: "test1" },
-    { email: "test2@test.com", password: "test2" },
-  ];
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
   }
 
   loginAttempt() {
-    if(this.searchUsers(this.email, this.password, this.users) != undefined) {
-      this.router.navigate(['account']);
-    } else {
-      alert("Credentials incorrect!");
+    let user = {
+      email: this.email,
+      password: this.password
     }
-  }
+    let data = JSON.stringify(user);
 
-searchUsers(email, password, users) {
-  for (var i = 0; i < users.length; i++) {
-    if (users[i].email === email && users[i].password == password) {
-      return users[i];
-    }
+    this.loginService.postAPIData(data).subscribe((response) => {
+        console.log('response from the post is ', response);
+        let storageJson = JSON.stringify(response);
+        sessionStorage.setItem("Authenticated_user", storageJson);
+        this.router.navigateByUrl('profile');
+    }, (error) => {
+      console.log('error during post was', error);
+    });
   }
-}
 
 }

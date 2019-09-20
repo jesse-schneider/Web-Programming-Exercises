@@ -21,8 +21,17 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['account']);
   }
 
+  profileBtn() {
+    this.router.navigate(['profile']);
+  }
+
   homeBtn() {
     this.router.navigate(['/']);
+  }
+
+  logoutBtn() {
+    sessionStorage.clear();
+    this.router.navigate(['login']);
   }
 
 }
